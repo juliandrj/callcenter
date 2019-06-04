@@ -1,0 +1,20 @@
+{
+	"operadores":[
+		{"id":1,"nombre":"Julian"},
+		{"id":2,"nombre":"David"},
+		{"id":3,"nombre":"Daniel"},
+		{"id":4,"nombre":"Felipe"},
+		{"id":5,"nombre":"Miguel"},
+		{"id":6,"nombre":"Angel"}
+	],
+	"supervisores":[
+		{"id":7,"nombre":"Elizabeth"},
+		{"id":8,"nombre":"Lubbiana"},
+		{"id":9,"nombre":"Luz"}
+	],
+	"directores":[
+		{"id":0,"nombre":"Rigo"},
+		{"id":10,"nombre":"Pedro"},
+		{"id":11,"nombre":"Juan"}
+	]
+}

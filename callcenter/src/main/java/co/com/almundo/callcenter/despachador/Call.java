@@ -3,6 +3,8 @@
  */
 package co.com.almundo.callcenter.despachador;
 
+import java.util.Observable;
+
 import org.apache.log4j.Logger;
 
 import co.com.almundo.callcenter.personas.Cliente;
@@ -12,7 +14,7 @@ import co.com.almundo.callcenter.personas.Empleado;
  * @author juliandrj
  *
  */
-public class Call extends Observable implements Dispatcheable {
+public class Call extends Observable implements Runnable {
 	
 	final static Logger log = Logger.getLogger(Call.class);
 	
@@ -23,12 +25,16 @@ public class Call extends Observable implements Dispatcheable {
 		this.cliente = cliente;
 	}
 	
-	public void atenderLlamada(Empleado empleado) throws InterruptedException {
-		this.empleado = empleado;
-		this.empleado.presentarse();
-		this.empleado.atenderLlamada();
-		log.info("[FIN DE LA LLAMADA] " + this.cliente.getId() + " - " + this.empleado.getId());
-		this.notifyObservers(this);
+	public void run() {
+		try {
+			this.empleado.presentarse();
+			this.empleado.atenderLlamada();
+			this.setChanged();
+			log.info("[FIN DE LA LLAMADA] Fue un gusto atenderlo -> " + this.cliente.getId() + " - " + this.empleado.getId());
+			this.notifyObservers();
+		} catch(InterruptedException ex) {
+			log.error("No se logro atender la llamada.", ex);
+		}
 	}
 	
 	/**
