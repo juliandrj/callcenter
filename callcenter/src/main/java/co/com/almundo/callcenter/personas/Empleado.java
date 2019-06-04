@@ -12,6 +12,7 @@ import org.apache.log4j.Logger;
 public abstract class Empleado extends Persona {
 
 	final static Logger log = Logger.getLogger(Empleado.class);
+	private Integer ide;
 	private String cargo;
 
 	@Override
@@ -36,7 +37,21 @@ public abstract class Empleado extends Persona {
 	public void atenderLlamada() throws InterruptedException {
 		long tiempoLlamada = 1000l * (5l + ((long) Math.ceil(5 * Math.random())));
 		Thread.sleep(tiempoLlamada);
-		log.info(" * Tiempo de la llamada: " + tiempoLlamada + "ms");
+		log.info(" * Tiempo atendiendo la llamada: " + tiempoLlamada + "ms");
+	}
+
+	/**
+	 * @return the ide
+	 */
+	public Integer getIde() {
+		return ide;
+	}
+
+	/**
+	 * @param ide the ide to set
+	 */
+	public void setIde(Integer ide) {
+		this.ide = ide;
 	}
 	
 }
